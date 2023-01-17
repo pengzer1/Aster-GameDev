@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Asset's from Unity AssetStore
+/[Aa]ssets/_AssetStore/*
+!/[Aa]ssets/_AssetStore/.gitkeep
