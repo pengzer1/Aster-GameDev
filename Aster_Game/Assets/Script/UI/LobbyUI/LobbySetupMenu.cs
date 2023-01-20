@@ -37,7 +37,7 @@ namespace AG.UI.LobbyUI
             });
 
             quickMatchButton.onClick.AddListener(() => {
-                Debug.Log($"not dev");
+                LobbySingleton.instance.QuickMatch();
             });
 
             createLobbyMenu.SetActive(false);

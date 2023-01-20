@@ -20,6 +20,12 @@ namespace AG.UI.LobbyUI
         [SerializeField]
         private TMP_InputField lobbyNameText;
 
+        [SerializeField]
+        private Toggle isPrivate;
+
+        [SerializeField]
+        private Slider playerCountSlider;
+
         private void Start()
         {
             cancleGameButton.onClick.AddListener(() => {
@@ -28,7 +34,7 @@ namespace AG.UI.LobbyUI
             });
 
             createGameButton.onClick.AddListener(() =>
-                LobbySingleton.instance.CreateLobby(lobbyNameText.text, 4, false)
+                LobbySingleton.instance.CreateLobby(lobbyNameText.text, (int)playerCountSlider.value, !isPrivate.isOn)
             );
         }
 
