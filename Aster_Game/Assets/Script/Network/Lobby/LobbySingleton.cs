@@ -35,20 +35,27 @@ namespace AG.Network.AGLobby
 
         private async void Start()
         {
-            // TODO : 인증 시스템 따로 제작
-            await UnityServices.InitializeAsync();
-
-            AuthenticationService.Instance.SignedIn += () => {Debug.Log($"Signed in : {AuthenticationService.Instance.PlayerId}");};
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-            playerName = "Default Player Name" + UnityEngine.Random.Range(1, 100);
-            Debug.Log($"{playerName}");
+            // TODO : Authenticate 추가
         }
 
         private void Update()
         {
             MaintainLobbyAlive();
             RefreshLobbyInfomation();
+        }
+
+        public async void Authenticate(string playerName)
+        {
+            this.playerName = playerName;
+            InitializationOptions initializationOptions = new InitializationOptions();
+            initializationOptions.SetProfile(playerName);
+
+            await UnityServices.InitializeAsync(initializationOptions);
+
+            AuthenticationService.Instance.SignedIn += () => {
+                Debug.Log($"Signed in [{AuthenticationService.Instance.PlayerId}]");
+            };
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
 
         public async void CreateLobby(string lobbyName, int maxPlayers, bool isPrivate)
