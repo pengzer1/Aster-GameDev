@@ -33,9 +33,9 @@ namespace AG.UI.LobbyUI
                 this.gameObject.SetActive(false);
             });
 
-            createGameButton.onClick.AddListener(() =>
-                LobbySingleton.instance.CreateLobby(lobbyNameText.text, (int)playerCountSlider.value, !isPrivate.isOn)
-            );
+            createGameButton.onClick.AddListener(() => {
+                LobbySingleton.instance.CreateLobby(lobbyNameText.text, (int)playerCountSlider.value, isPrivate.isOn);
+            });
         }
 
         private void SetLobbySetupMenu(bool isActive)

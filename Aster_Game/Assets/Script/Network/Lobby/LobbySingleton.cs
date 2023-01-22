@@ -5,8 +5,6 @@ using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.Services.Authentication;
-using AG.Network;
-
 
 namespace AG.Network.AGLobby
 {
@@ -36,6 +34,7 @@ namespace AG.Network.AGLobby
         private async void Start()
         {
             // TODO : Authenticate 추가
+            Authenticate("defaultPlayer");
         }
 
         private void Update()
@@ -84,7 +83,7 @@ namespace AG.Network.AGLobby
             if(lobbyMaintainTimer < NetworkConstants.LOBBY_MAINTAIN_TIME) return;
 
             lobbyMaintainTimer = 0.0f;
-            await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
+            await LobbyService.Instance.SendHeartbeatPingAsync(joinedLobby.Id);
         }
 
         public async void RefreshLobbyInfomation()
@@ -204,6 +203,7 @@ namespace AG.Network.AGLobby
 
         private async void MigrateHost()
         {
+            // TODO : Test this
             try
             {
                 hostLobby = await Lobbies.Instance.UpdateLobbyAsync(hostLobby.Id, new UpdateLobbyOptions{
