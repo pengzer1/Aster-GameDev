@@ -8,11 +8,14 @@ namespace AG.UI.LobbyUI
 {
     public class LobbyListMenu : MonoBehaviour
     {
-        [SerializeField]
-        private LobbyInfoButtonUI lobbyButtonElement;
+        // [SerializeField]
+        // private LobbyInfoButtonUI lobbyButtonElement;
 
         [SerializeField]
         private Transform listContainer;
+
+        [SerializeField]
+        private LobbyInfoButtonPool lobbyInfoButtonPool;
 
         [SerializeField]
         private Button cancleButton;
@@ -32,15 +35,18 @@ namespace AG.UI.LobbyUI
 
         private void RefreshLobbyListUI(List<Lobby> lobbyList)
         {
-            // TODO : to object pool
-            foreach(Transform child in listContainer)
-            {
-                Destroy(child.gameObject);
-            }
+            // foreach(Transform child in listContainer)
+            // {
+            //     Destroy(child.gameObject);
+            // }
+            lobbyInfoButtonPool.ResetAllLobbyButtons();
 
             foreach(var lobby in lobbyList)
             {
-                Instantiate(lobbyButtonElement, listContainer).UpdateLobbyButtonInfo(lobby);
+                var button = lobbyInfoButtonPool.GetObjectFromPool();
+                button.transform.SetParent(listContainer);
+                button.GetComponent<LobbyInfoButtonUI>().UpdateLobbyButtonInfo(lobby);
+                // Instantiate(lobbyButtonElement, listContainer).UpdateLobbyButtonInfo(lobby);
             }
         } 
     }

@@ -2,10 +2,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.Services.Lobbies.Models;
+using AG.GameLogic.ObjectPooling;
 
 namespace AG.UI.LobbyUI
 {
-    public class LobbyInfoButtonUI : MonoBehaviour
+    public class LobbyInfoButtonUI : PoolableObject
     {
         [SerializeField]
         private TextMeshProUGUI lobbyNameText;
