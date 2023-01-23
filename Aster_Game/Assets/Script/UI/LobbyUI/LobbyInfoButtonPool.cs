@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AG.GameLogic.ObjectPooling;
@@ -31,7 +30,7 @@ namespace AG.UI.LobbyUI
 
         public void InsertObjectToPool(PoolableObject obj)
         {
-            obj.gameObject.transform.SetParent(this.gameObject.transform);
+            obj.gameObject.transform.SetParent(this.transform);
             obj.gameObject.SetActive(false);
             
             buttonPool.Enqueue(obj);
@@ -45,7 +44,7 @@ namespace AG.UI.LobbyUI
             InsertObjectToPool(button);
         }
 
-        public void ResetAllLobbyButtons()
+        public void ReturnAllObjects()
         {
             while(outbuttons.Count > 0)
             {
