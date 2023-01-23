@@ -74,7 +74,7 @@ namespace AG.Network.AGLobby
             var lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createOptions);
             joinedLobby = lobby;
 
-            joinLobbyEvent?.Invoke(lobby);
+            joinLobbyEvent?.Invoke(joinedLobby);
 
             Debug.Log($"Create lobby {joinedLobby.Name}");
         }
