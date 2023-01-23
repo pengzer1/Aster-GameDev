@@ -9,5 +9,9 @@ namespace AG.Network
         public static readonly string GAMEMODE_KEY = "GameMode";
 
         public static readonly string PLAYERNAME_KEY = "PlayerName";
+
+        public static readonly string GAMESTART_KEY = "GameStart";
+
+        public static readonly string GAMESTART_KEY_DEFAULT = "DEFAULT";
     }
 }
