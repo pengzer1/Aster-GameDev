@@ -13,6 +13,9 @@ namespace AG.UI.LobbyUI
         private GameObject lobbySetupMenu; 
 
         [SerializeField]
+        private GameObject lobbyCreateMenu; 
+
+        [SerializeField]
         private IObjectPool playerInfomationPool;
 
         [SerializeField]
@@ -48,8 +51,19 @@ namespace AG.UI.LobbyUI
             });
         }
 
+        private void Start()
+        {
+            LobbySingleton.instance.joinLobbyEvent += UpdateLobbyInfomation;
+
+            this.gameObject.SetActive(false);
+        }
+
         public void UpdateLobbyInfomation(Lobby lobby)
         {
+            lobbySetupMenu.SetActive(false);
+            lobbyCreateMenu.SetActive(false);
+            this.gameObject.SetActive(true);
+
             SetPlayerInfomations(lobby);
             SetTextInfomation(lobby);
         }
@@ -62,7 +76,7 @@ namespace AG.UI.LobbyUI
             {
                 var playerInfomation = playerInfomationPool.GetObjectFromPool();
                 playerInfomation.transform.SetParent(playerListContainer);
-                // playerInfomation.GetComponent<>().
+                playerInfomation.GetComponent<LobbyPlayerInfomationUI>()?.SetPlayerInfo(player);
             }
         }
 

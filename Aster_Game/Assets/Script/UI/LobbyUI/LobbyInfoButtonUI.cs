@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.Services.Lobbies.Models;
 using AG.GameLogic.ObjectPooling;
+using AG.Network.AGLobby;
 
 namespace AG.UI.LobbyUI
 {
@@ -21,7 +22,9 @@ namespace AG.UI.LobbyUI
 
         private void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(() => {});
+            GetComponent<Button>().onClick.AddListener(() => {
+                LobbySingleton.instance.JoinLobbyByUI(lobby);
+            });
         }
 
         public void UpdateLobbyButtonInfo(Lobby lobbyButton)

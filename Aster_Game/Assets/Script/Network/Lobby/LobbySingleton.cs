@@ -100,7 +100,8 @@ namespace AG.Network.AGLobby
             lobbyInfomationUpdateTimer = 0.0f;
             var lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
             joinedLobby = lobby;
-            // TODO : refresh ui
+
+            joinLobbyEvent?.Invoke(joinedLobby);
             // TODO : handle kicked
             // TODO : started game
             if(joinedLobby.Data[NetworkConstants.GAMESTART_KEY].Value != NetworkConstants.GAMESTART_KEY_DEFAULT)

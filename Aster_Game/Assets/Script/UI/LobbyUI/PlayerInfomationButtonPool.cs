@@ -23,6 +23,7 @@ namespace AG.Network.AGLobby
             var playerInfomationButton = buttonPool.Dequeue();
             playerInfomationButton.gameObject.SetActive(true);
             outbuttons.Enqueue(playerInfomationButton);
+            playerInfomationButton.transform.localScale = new Vector3(1, 1, 1);
 
             return playerInfomationButton;
         }

@@ -29,11 +29,14 @@ namespace AG.UI.LobbyUI
         private void Start()
         {
             LobbySingleton.instance.lobbyListChangedEvent += RefreshLobbyListUI;
+            LobbySingleton.instance.joinLobbyEvent += PlayerJoinLobby;
 
             cancleButton.onClick.AddListener(() => {
                 lobbySetupMenu.SetActive(true);
                 this.gameObject.SetActive(false);
             });
+
+            this.gameObject.SetActive(false);
         }
 
         private void RefreshLobbyListUI(List<Lobby> lobbyList)
@@ -47,5 +50,10 @@ namespace AG.UI.LobbyUI
                 button.GetComponent<LobbyInfoButtonUI>().UpdateLobbyButtonInfo(lobby);
             }
         } 
+
+        private void PlayerJoinLobby(Lobby lobby)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }
