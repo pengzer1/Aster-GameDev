@@ -17,11 +17,11 @@ namespace AG.Network.AGLobby
 
         public event Action<Lobby> joinLobbyEvent;
 
+        public event Action gameStartEvent;
+
         private Lobby hostLobby;
 
         private Lobby joinedLobby;
-
-        public Lobby curLobby { get; }
 
         private string playerName;
 
@@ -32,12 +32,6 @@ namespace AG.Network.AGLobby
         private void Awake()
         {
             instance = this;
-        }
-
-        private async void Start()
-        {
-            // TODO : Authenticate 추가
-            Authenticate("defaultPlayer");
         }
 
         private void Update()
@@ -103,16 +97,16 @@ namespace AG.Network.AGLobby
 
             joinLobbyEvent?.Invoke(joinedLobby);
             // TODO : handle kicked
-            // TODO : started game
             if(joinedLobby.Data[NetworkConstants.GAMESTART_KEY].Value != NetworkConstants.GAMESTART_KEY_DEFAULT)
             {
                 if(!IsLobbyhost())
                 {
                     RelaySingleton.JoinRelay(joinedLobby.Data[NetworkConstants.GAMESTART_KEY].Value);
-
-                    joinedLobby = null;
-
                 }
+
+                joinedLobby = null;
+
+                gameStartEvent?.Invoke();
             }
         }
 
@@ -196,7 +190,7 @@ namespace AG.Network.AGLobby
 
         public async void KickPlayer(string playerId)
         {
-            if(!IsLobbyhost())  return;
+            if(IsLobbyhost())  return;
 
             try
             {
@@ -262,6 +256,11 @@ namespace AG.Network.AGLobby
         private bool IsLobbyhost()
         {
             return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
+        }
+
+        public Lobby GetJoinedLobby()
+        {
+            return joinedLobby;
         }
     }
 }

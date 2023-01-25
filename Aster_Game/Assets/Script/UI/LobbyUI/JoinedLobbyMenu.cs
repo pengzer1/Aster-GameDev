@@ -54,6 +54,10 @@ namespace AG.UI.LobbyUI
         private void Start()
         {
             LobbySingleton.instance.joinLobbyEvent += UpdateLobbyInfomation;
+            LobbySingleton.instance.gameStartEvent += () => { 
+                this.gameObject.SetActive(false);
+                this.transform.parent.gameObject.SetActive(false); 
+            };
 
             this.gameObject.SetActive(false);
         }
@@ -76,7 +80,7 @@ namespace AG.UI.LobbyUI
             {
                 var playerInfomation = playerInfomationPool.GetObjectFromPool();
                 playerInfomation.transform.SetParent(playerListContainer);
-                playerInfomation.GetComponent<LobbyPlayerInfomationUI>()?.SetPlayerInfo(player);
+                playerInfomation.GetComponent<LobbyPlayerInfomationUI>().SetPlayerInfo(player);
             }
         }
 

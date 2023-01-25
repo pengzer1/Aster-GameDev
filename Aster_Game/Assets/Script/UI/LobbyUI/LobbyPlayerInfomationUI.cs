@@ -34,7 +34,6 @@ namespace AG.UI.LobbyUI
 
         private void KickPlayer()
         {
-            // TODO : 방장 스스로 차면 생기는 버그 해결
             if(player == null)  return;
 
             LobbySingleton.instance.KickPlayer(player.Id);

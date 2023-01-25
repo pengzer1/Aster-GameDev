@@ -14,7 +14,7 @@ namespace AG.Network.AGRelay
         {
             try
             {
-                var playerCount = LobbySingleton.instance.curLobby.MaxPlayers - 1;
+                var playerCount = LobbySingleton.instance.GetJoinedLobby().MaxPlayers - 1;
                 Allocation allocation = await RelayService.Instance.CreateAllocationAsync(playerCount);
 
                 string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
