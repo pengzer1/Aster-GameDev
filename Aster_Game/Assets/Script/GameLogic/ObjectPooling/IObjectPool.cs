@@ -7,5 +7,7 @@ namespace AG.GameLogic.ObjectPooling
         void InsertObjectToPool(PoolableObject obj);
 
         void SupplyObjectPool();
+
+        void ReturnAllObjects();
     }
 }

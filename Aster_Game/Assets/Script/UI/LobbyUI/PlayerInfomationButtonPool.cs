@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using AG.GameLogic.ObjectPooling;
 
-namespace AG.UI.LobbyUI
+namespace AG.Network.AGLobby
 {
-    public class LobbyInfoButtonPool : MonoBehaviour, IObjectPool
+    public class PlayerInfomationButtonPool : MonoBehaviour, IObjectPool
     {
         private Queue<PoolableObject> buttonPool = new Queue<PoolableObject>();
-
+        // TODO : 이 아웃버튼이 큰 문제 없는지 확인
         private Queue<PoolableObject> outbuttons = new Queue<PoolableObject>();
-        
+
         [SerializeField]
-        private PoolableObject buttonPrefab;
+        private PoolableObject playerInfomationButtonPrefab;
 
         public PoolableObject GetObjectFromPool()
         {
@@ -20,28 +20,27 @@ namespace AG.UI.LobbyUI
                 SupplyObjectPool();
             }
 
-            var button = buttonPool.Dequeue();
+            var playerInfomationButton = buttonPool.Dequeue();
+            playerInfomationButton.gameObject.SetActive(true);
+            outbuttons.Enqueue(playerInfomationButton);
+            playerInfomationButton.transform.localScale = new Vector3(1, 1, 1);
 
-            button.gameObject.SetActive(true);
-            button.transform.localScale = new Vector3(1, 1, 1);
-            outbuttons.Enqueue(button);
-            return button;
+            return playerInfomationButton;
         }
 
         public void InsertObjectToPool(PoolableObject obj)
         {
-            obj.gameObject.transform.SetParent(this.transform);
             obj.gameObject.SetActive(false);
-            
+            obj.transform.SetParent(this.transform);
+
             buttonPool.Enqueue(obj);
         }
 
         public void SupplyObjectPool()
         {
-            var button = Instantiate(buttonPrefab);
-            button.ReturnToPoolCallbackEvent += InsertObjectToPool;
-
-            InsertObjectToPool(button);
+            var playerInfomationButton = Instantiate(playerInfomationButtonPrefab);
+            playerInfomationButton.ReturnToPoolCallbackEvent += InsertObjectToPool;
+            InsertObjectToPool(playerInfomationButton);
         }
 
         public void ReturnAllObjects()

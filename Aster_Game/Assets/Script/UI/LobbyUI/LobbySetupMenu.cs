@@ -41,6 +41,7 @@ namespace AG.UI.LobbyUI
             });
 
             createLobbyMenu.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
 
