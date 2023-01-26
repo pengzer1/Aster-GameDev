@@ -59,6 +59,14 @@ namespace AG.UI.LobbyUI
                 this.transform.parent.gameObject.SetActive(false); 
             };
 
+            LobbySingleton.instance.kickedFromLobbyEvent += () => {
+                this.gameObject.SetActive(false);
+            };
+
+            LobbySingleton.instance.leaveLobbyEvent += () => {
+                this.gameObject.SetActive(false);
+            };
+
             this.gameObject.SetActive(false);
         }
 

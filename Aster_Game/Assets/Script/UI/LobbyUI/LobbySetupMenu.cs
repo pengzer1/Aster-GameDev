@@ -40,6 +40,14 @@ namespace AG.UI.LobbyUI
                 LobbySingleton.instance.QuickMatch();
             });
 
+            LobbySingleton.instance.kickedFromLobbyEvent += () => { 
+                this.gameObject.SetActive(true);
+            };
+
+            LobbySingleton.instance.leaveLobbyEvent += () => {
+                this.gameObject.SetActive(true);
+            };
+
             createLobbyMenu.SetActive(false);
             this.gameObject.SetActive(false);
         }
