@@ -141,6 +141,10 @@ namespace AG.Network.AGLobby
             } 
             catch (LobbyServiceException e) 
             {
+                if(e.Reason == LobbyExceptionReason.NoOpenLobbies)
+                {
+                    Debug.Log($"No Open Lobbies");
+                }
                 Debug.Log(e);
             }
         }
@@ -254,7 +258,7 @@ namespace AG.Network.AGLobby
 
         private async void MigrateHost()
         {
-            if(!IsLobbyhost())  return;
+            if(!IsLobbyhost() || joinedLobby.Players.Count <= 1)  return;
             try
             {
                 joinedLobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions{
