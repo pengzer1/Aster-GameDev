@@ -28,7 +28,6 @@ namespace AG.UI.LobbyUI
         public void SetPlayerInfo(Player player)
         {
             this.player = player;
-            // TODO : Quick match 사용시 오류 나옴
             playerNameText.text = player.Data[NetworkConstants.PLAYERNAME_KEY].Value;
         }
 

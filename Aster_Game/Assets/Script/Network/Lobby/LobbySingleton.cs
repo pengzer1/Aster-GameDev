@@ -134,10 +134,8 @@ namespace AG.Network.AGLobby
         public async void QuickMatch()
         {
             try {
-                QuickJoinLobbyOptions options = new QuickJoinLobbyOptions();
-
-                Lobby lobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
-                joinedLobby = lobby;
+                QuickJoinLobbyOptions options = new QuickJoinLobbyOptions{ Player = GetPlayer() };
+                joinedLobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
 
                 joinLobbyEvent?.Invoke(joinedLobby);
             } 
