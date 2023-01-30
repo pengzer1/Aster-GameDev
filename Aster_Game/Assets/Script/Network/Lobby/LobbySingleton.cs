@@ -23,8 +23,6 @@ namespace AG.Network.AGLobby
 
         public event Action gameStartEvent;
 
-        private Lobby hostLobby;
-
         private Lobby joinedLobby;
 
         private string playerName;
