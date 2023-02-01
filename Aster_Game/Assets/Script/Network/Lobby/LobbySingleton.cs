@@ -131,7 +131,8 @@ namespace AG.Network.AGLobby
 
         public async void QuickMatch()
         {
-            try {
+            try 
+            {
                 QuickJoinLobbyOptions options = new QuickJoinLobbyOptions{ Player = GetPlayer() };
                 joinedLobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
 
@@ -151,16 +152,19 @@ namespace AG.Network.AGLobby
         {
             try
             {
-                QueryLobbiesOptions options = new QueryLobbiesOptions{
+                QueryLobbiesOptions options = new QueryLobbiesOptions
+                {
                     Count = 25,
-                    Filters = new List<QueryFilter>{
+                    Filters = new List<QueryFilter>
+                    {
                         new QueryFilter(
                             field: QueryFilter.FieldOptions.AvailableSlots,
                             op: QueryFilter.OpOptions.GT,
                             value: "0"
                         )
                     },
-                    Order = new List<QueryOrder>{
+                    Order = new List<QueryOrder>
+                    {
                         new QueryOrder(
                             asc: false,
                             field: QueryOrder.FieldOptions.Created
@@ -197,9 +201,6 @@ namespace AG.Network.AGLobby
 
         public async void KickPlayer(string playerId)
         {
-            if(!IsLobbyhost())  return;
-            if(playerId == AuthenticationService.Instance.PlayerId) return;
-
             try
             {
                 await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, playerId);
@@ -212,14 +213,14 @@ namespace AG.Network.AGLobby
 
         public async void StartGame()
         {
-            if(!IsLobbyhost())  return;
-
             try
             {
                 string relayCode = await RelaySingleton.CreateRelay();
 
-                Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions{
-                    Data = new Dictionary<string, DataObject>{
+                Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
+                {
+                    Data = new Dictionary<string, DataObject>
+                    {
                         { NetworkConstants.GAMESTART_KEY, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
                     }
                 });
@@ -234,8 +235,10 @@ namespace AG.Network.AGLobby
 
         private Player GetPlayer()
         {
-            return new Player{
-                Data = new Dictionary<string, PlayerDataObject>{
+            return new Player
+            {
+                Data = new Dictionary<string, PlayerDataObject>
+                {
                     {NetworkConstants.PLAYERNAME_KEY, new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName)}
                 }
             };
@@ -247,8 +250,7 @@ namespace AG.Network.AGLobby
 
             foreach(var player in joinedLobby.Players)
             {
-                if(player.Id != AuthenticationService.Instance.PlayerId)    continue;
-                return true;
+                if(player.Id == AuthenticationService.Instance.PlayerId)    return true;
             }
 
             return false;
@@ -257,9 +259,11 @@ namespace AG.Network.AGLobby
         private async void MigrateHost()
         {
             if(!IsLobbyhost() || joinedLobby.Players.Count <= 1)  return;
+            
             try
             {
-                joinedLobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions{
+                joinedLobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
+                {
                     HostId = joinedLobby.Players[1].Id
                 });
             }
@@ -269,7 +273,22 @@ namespace AG.Network.AGLobby
             }
         }
 
-        private bool IsLobbyhost()
+        public async void MigrateHost(Player nextHost)
+        {
+            try
+            {
+                joinedLobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
+                {
+                    HostId = nextHost.Id
+                });
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log($"{e}");
+            }
+        }
+
+        public bool IsLobbyhost()
         {
             return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
         }
