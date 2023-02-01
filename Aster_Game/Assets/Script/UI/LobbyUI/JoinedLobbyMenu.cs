@@ -72,12 +72,17 @@ namespace AG.UI.LobbyUI
 
         public void UpdateLobbyInfomation(Lobby lobby)
         {
+            SetupMenus();
+            SetPlayerInfomations(lobby);
+            SetTextInfomation(lobby);
+            DeleteStartGameButtonIfNotHost();
+        }
+
+        private void SetupMenus()
+        {
             lobbySetupMenu.SetActive(false);
             lobbyCreateMenu.SetActive(false);
             this.gameObject.SetActive(true);
-
-            SetPlayerInfomations(lobby);
-            SetTextInfomation(lobby);
         }
 
         private void SetPlayerInfomations(Lobby lobby)
@@ -97,6 +102,16 @@ namespace AG.UI.LobbyUI
             lobbyNameText.text = lobby.Name;
             playerCountText.text = lobby.Players.Count.ToString();
             maxPlayerCountText.text = lobby.MaxPlayers.ToString();
+        }
+
+        private void DeleteStartGameButtonIfNotHost()
+        {
+            if(LobbySingleton.instance.IsLobbyhost())
+            {
+                startGameButton.gameObject.SetActive(true);
+                return;
+            }
+            startGameButton.gameObject.SetActive(false);
         }
     }
 }
