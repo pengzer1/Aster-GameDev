@@ -16,7 +16,7 @@ namespace AG.CharacterController
         [SerializeField]
         private Animator targetAnimator;
 
-        private bool walk = false;
+        private bool isWalking;
 
         void Update()
         {
@@ -33,14 +33,14 @@ namespace AG.CharacterController
 
                 pelvis.AddForce(direction * speed);
 
-                walk = true;
+                isWalking = true;
             }
             else
             {
-                walk = false;
+                isWalking = false;
             }
 
-            targetAnimator.SetBool("Walk", this.walk);
+            targetAnimator.SetBool("Walk", isWalking);
         }
     }
 }

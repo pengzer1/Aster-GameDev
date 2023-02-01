@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AG.Character
 {
-    public class CopyLimb : MonoBehaviour
+    public class CopyAnimToRagdoll : MonoBehaviour
     {
         [SerializeField]
         private Transform targetLimb;
@@ -13,7 +13,7 @@ namespace AG.Character
 
         void Start()
         {
-            configurableJoint = this.GetComponent<ConfigurableJoint>();
+            configurableJoint = GetComponent<ConfigurableJoint>();
             targetInitialRotation = this.targetLimb.transform.localRotation;
         }
 
