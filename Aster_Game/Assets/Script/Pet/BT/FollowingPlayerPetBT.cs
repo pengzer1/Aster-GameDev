@@ -6,7 +6,6 @@ namespace AG.Pet.BehaviorTree
 {
     public class FollowingPlayerPetBT : AG.GameLogic.BehaviorTree.Tree
     {
-        
         [SerializeField]
         private Transform player;
         

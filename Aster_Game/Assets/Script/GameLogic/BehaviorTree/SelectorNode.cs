@@ -6,6 +6,7 @@ namespace AG.GameLogic.BehaviorTree
     {
         public SelectorNode() : base(){}
 
+        /// <summary> or node </summary>
         public SelectorNode(List<Node> children) : base(children){}
 
         public override NodeState Evaluate()
