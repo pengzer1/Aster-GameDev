@@ -11,7 +11,7 @@ namespace AG.GameLogic.BehaviorTree
             rootNode = SetupBehaviorTree();
         }
 
-        private void Update()
+        protected void Update()
         {
             if(rootNode is null)    return;
 

@@ -10,29 +10,22 @@ namespace AG.GameLogic.BehaviorTree
 
         public override NodeState Evaluate()
         {
-            NodeState nodeState;
-            bool anyChildIsRunning = false;
-
-            foreach (Node node in childrenNode)
+            foreach(Node node in childrenNode)
             {
-                switch (node.Evaluate())
+                switch(node.Evaluate())
                 {
                     case NodeState.Failure:
-                        nodeState = NodeState.Failure;
-                        return nodeState;
+                        continue;
                     case NodeState.Success:
-                        continue;
+                        return state = NodeState.Success;
                     case NodeState.Running:
-                        anyChildIsRunning = true;
-                        continue;
+                        return state = NodeState.Running;
                     default:
-                        nodeState = NodeState.Success;
-                        return nodeState;
+                        continue;
                 }
             }
 
-            nodeState = anyChildIsRunning ? NodeState.Running : NodeState.Success;
-            return nodeState;
+            return state = NodeState.Failure;
         }
     }   
 }
