@@ -7,9 +7,7 @@ namespace AG.UI.LobbyUI
     public class LobbyInfoButtonPool : MonoBehaviour, IObjectPool
     {
         private Queue<PoolableObject> buttonPool = new Queue<PoolableObject>();
-
         private Queue<PoolableObject> outbuttons = new Queue<PoolableObject>();
-        
         [SerializeField]
         private PoolableObject buttonPrefab;
 

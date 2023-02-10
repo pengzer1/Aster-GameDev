@@ -12,9 +12,7 @@ namespace AG.GameLogic.BehaviorTree
     public abstract class Node
     {
         protected NodeState state;
-
         public Node parentNode;
-
         protected List<Node> childrenNode = new List<Node>();
         // TODO: rename
         private Dictionary<string, object> data = new Dictionary<string, object>();

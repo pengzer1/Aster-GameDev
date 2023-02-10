@@ -11,13 +11,10 @@ namespace AG.UI.LobbyUI
     {
         [SerializeField]
         private Transform listContainer;
-
         [SerializeField]
         private IObjectPool lobbyInfoButtonPool;
-
         [SerializeField]
         private Button cancleButton;
-
         [SerializeField]
         private GameObject lobbySetupMenu;
 

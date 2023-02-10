@@ -7,9 +7,7 @@ namespace AG.Network
     public struct CustomStructVariable : INetworkSerializable
     {
         public int intValue;
-
         public float floatValue;
-
         public Unity.Collections.FixedString128Bytes message;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
@@ -73,7 +71,6 @@ namespace AG.Network
 
         [SerializeField]
         private Transform spawningObject;
-        
         private Transform spawnedObject;
 
         private void SpawnObject()

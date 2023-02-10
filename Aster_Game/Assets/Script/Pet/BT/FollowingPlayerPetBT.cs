@@ -8,7 +8,6 @@ namespace AG.Pet.BehaviorTree
     {
         [SerializeField]
         private Transform player;
-        
         [SerializeField]
         private Transform pet;
 
