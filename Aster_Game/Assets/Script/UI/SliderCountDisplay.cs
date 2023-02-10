@@ -8,7 +8,6 @@ namespace AG.UI
     {
         [SerializeField]
         private TextMeshProUGUI displayText;
-
         [SerializeField]
         private Slider sliderToDisplay;
 

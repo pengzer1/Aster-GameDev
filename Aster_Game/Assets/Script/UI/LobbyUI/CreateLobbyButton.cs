@@ -9,20 +9,16 @@ namespace AG.UI.LobbyUI
     {
         [SerializeField]
         private GameObject lobbySetupMenu;
-
+    
         [Header("Create Lobby Elements")]
         [SerializeField]
         private Button createGameButton;
-
         [SerializeField]
         private Button cancleGameButton;
-
         [SerializeField]
         private TMP_InputField lobbyNameText;
-
         [SerializeField]
         private Toggle isPrivate;
-
         [SerializeField]
         private Slider playerCountSlider;
 
