@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Unity.Services.Lobbies.Models;
 using AG.Network.AGLobby;
 using AG.GameLogic.ObjectPooling;
@@ -16,6 +17,10 @@ namespace AG.UI.LobbyUI
         [SerializeField]
         private Button cancleButton;
         [SerializeField]
+        private TMP_InputField codeInputField;
+        [SerializeField]
+        private Button searchByCodeButton;
+        [SerializeField]
         private GameObject lobbySetupMenu;
 
         private void Awake()
@@ -28,12 +33,23 @@ namespace AG.UI.LobbyUI
             LobbySingleton.instance.lobbyListChangedEvent += RefreshLobbyListUI;
             LobbySingleton.instance.joinLobbyEvent += PlayerJoinLobby;
 
-            cancleButton.onClick.AddListener(() => {
+            ButtonSetup();
+
+            this.gameObject.SetActive(false);
+        }
+
+        private void ButtonSetup()
+        {
+            cancleButton.onClick.AddListener(() =>
+            {
                 lobbySetupMenu.SetActive(true);
                 this.gameObject.SetActive(false);
             });
 
-            this.gameObject.SetActive(false);
+            searchByCodeButton.onClick.AddListener(() =>
+            {
+                LobbySingleton.instance.JoinLobbyByCode(codeInputField.text);
+            });
         }
 
         private void RefreshLobbyListUI(List<Lobby> lobbyList)

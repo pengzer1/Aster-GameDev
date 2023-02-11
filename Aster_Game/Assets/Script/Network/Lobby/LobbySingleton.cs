@@ -14,6 +14,7 @@ namespace AG.Network.AGLobby
         public static LobbySingleton instance { get; private set; }
         public event Action<List<Lobby>> lobbyListChangedEvent;
         public event Action<Lobby> joinLobbyEvent;
+        public event Action joinFailEvent;
         public event Action leaveLobbyEvent;
         public event Action kickedFromLobbyEvent;
         public event Action gameStartEvent;
@@ -106,18 +107,34 @@ namespace AG.Network.AGLobby
 
         public async void JoinLobbyByUI(Lobby lobby)
         {
-            var joinOption = new JoinLobbyByIdOptions{ Player = GetPlayer() };
-            joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinOption);
+            try
+            {
+                var joinOption = new JoinLobbyByIdOptions{ Player = GetPlayer() };
+                joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id, joinOption);
 
-            joinLobbyEvent?.Invoke(joinedLobby);
+                joinLobbyEvent?.Invoke(joinedLobby);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log($"{e}");
+                joinFailEvent?.Invoke();
+            }
         }
 
         public async void JoinLobbyByCode(string lobbyCode)
         {
-            var joinOption = new JoinLobbyByCodeOptions{ Player = GetPlayer() };
-            joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode, joinOption);
+            try
+            {
+                var joinOption = new JoinLobbyByCodeOptions{ Player = GetPlayer() };
+                joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode, joinOption);
 
-            joinLobbyEvent?.Invoke(joinedLobby);
+                joinLobbyEvent?.Invoke(joinedLobby);
+            }
+            catch (LobbyServiceException e)
+            {
+                Debug.Log($"{e}");
+                joinFailEvent?.Invoke();
+            }
         }
 
         public async void QuickMatch()
