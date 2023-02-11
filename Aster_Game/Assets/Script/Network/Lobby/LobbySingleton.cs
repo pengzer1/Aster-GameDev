@@ -80,8 +80,20 @@ namespace AG.Network.AGLobby
             if(lobbyInfomationUpdateTimer < NetworkConstants.LOBBY_INFO_UPDATE_TIME)   return;
 
             lobbyInfomationUpdateTimer = 0.0f;
-            var lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
-            joinedLobby = lobby;
+            try
+            { 
+                var lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+                joinedLobby = lobby;
+            }
+            catch (LobbyServiceException e)
+            {
+                if(e.Reason == LobbyExceptionReason.Forbidden)
+                {
+                    joinedLobby = null;
+                    kickedFromLobbyEvent?.Invoke();
+                    return;
+                }  
+            }
 
             if(!IsPlayerInLobby())
             {
