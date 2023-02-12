@@ -2,7 +2,7 @@
 
 
 
-| **게임 명**       | (미정)      |
+| **게임 명**       | Puppet Swing(가제) |
 | ----------------- | ----------- |
 | **게임 장르**     | 3D 액션     |
 | **개발 인원**     | 개발 2      |
@@ -15,8 +15,8 @@
 
 | 이름 (Github)                         | 역할                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
-| [장한준](https://github.com/HUSK-321) | UnityGameService 를 통한 서버 로직 관리 (NetCode, Lobby, Relay) |
-| [차민재](https://github.com/pengzer1) | 플레이어 기능 제작                                           |
+| [장한준](https://github.com/HUSK-321) | UnityGameService 를 통한 서버 로직 관리 (NetCode, Lobby, Relay) <br> GPGS 연동 관리 <br> BT, Object Pooling 알고리즘 준비 |
+| [차민재](https://github.com/pengzer1) | 플레이어 기능 제작 <br> Cinemachine을 통한 카메라 관리 |
 
 
 
