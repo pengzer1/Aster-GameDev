@@ -6,9 +6,7 @@ namespace AG.Character
     {
         [SerializeField]
         private Transform targetLimb;
-
         private ConfigurableJoint configurableJoint;
-
         private Quaternion targetInitialRotation;
 
         void Start()

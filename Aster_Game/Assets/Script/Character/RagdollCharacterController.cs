@@ -1,22 +1,29 @@
 using UnityEngine;
+using AG.RotateMouse;
 
 namespace AG.CharacterController
 {
     public class RagdollCharacterController : MonoBehaviour
     {
+
         [SerializeField]
         private float speed = 5f;
-
         [SerializeField]
         private ConfigurableJoint pelvisJoint;
-
         [SerializeField]
         private Rigidbody pelvis;
-
         [SerializeField]
         private Animator targetAnimator;
-
+        [SerializeField]
+        private Transform cameraTransform;
         private bool isWalking;
+        private RotateToMouse rotateMouse;
+
+        /*void Awake()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }*/
 
         void Update()
         {
@@ -41,6 +48,8 @@ namespace AG.CharacterController
             }
 
             targetAnimator.SetBool("Walk", isWalking);
+
+            direction = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * direction;
         }
     }
 }
