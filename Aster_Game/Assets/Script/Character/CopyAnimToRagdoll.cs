@@ -1,14 +1,12 @@
 using UnityEngine;
 
-namespace AG.Character
+namespace AG.PlayerCopyAnim
 {
     public class CopyAnimToRagdoll : MonoBehaviour
     {
         [SerializeField]
         private Transform targetLimb;
-
         private ConfigurableJoint configurableJoint;
-
         private Quaternion targetInitialRotation;
 
         void Start()
