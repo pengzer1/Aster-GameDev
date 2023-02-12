@@ -22,6 +22,8 @@ namespace AG.UI.LobbyUI
         [SerializeField]
         private TextMeshProUGUI maxPlayerCountText;
         [SerializeField]
+        private TextMeshProUGUI lobbyCodeText;
+        [SerializeField]
         private Transform playerListContainer;
         [SerializeField]
         private Button leaveLobbyButton;
@@ -94,6 +96,7 @@ namespace AG.UI.LobbyUI
             lobbyNameText.text = lobby.Name;
             playerCountText.text = lobby.Players.Count.ToString();
             maxPlayerCountText.text = lobby.MaxPlayers.ToString();
+            lobbyCodeText.text = lobby.LobbyCode;
         }
 
         private void DeleteStartGameButtonIfNotHost()

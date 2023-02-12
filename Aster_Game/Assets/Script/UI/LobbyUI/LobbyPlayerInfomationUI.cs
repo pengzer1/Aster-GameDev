@@ -26,7 +26,6 @@ namespace AG.UI.LobbyUI
 
         public void SetPlayerInfo(Player player)
         {
-            Debug.Log($"SetPlayerInfo");
             this.player = player;
             playerNameText.text = player.Data[NetworkConstants.PLAYERNAME_KEY].Value;
 
