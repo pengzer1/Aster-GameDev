@@ -19,11 +19,11 @@ namespace AG.CharacterController
         private bool isWalking;
         private RotateToMouse rotateMouse;
 
-        /*void Awake()
+        void Awake()
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-        }*/
+        }
 
         void Update()
         {
