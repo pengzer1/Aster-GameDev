@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AG.TPSController
+namespace AG.PlayerTPSController
 {
     public class TPSCharacterController : MonoBehaviour
     {
@@ -41,14 +41,7 @@ namespace AG.TPSController
 
             float x = camAngle.x - mouseDelta.y;
 
-            if (x < 180f)
-            {
-                x = Mathf.Clamp(x, -1f, 50f);
-            }
-            else
-            {
-                x = Mathf.Clamp(x, 335f, 361f);
-            }
+            x = (x < 180f) ? Mathf.Clamp(x, -1f, 50f) : Mathf.Clamp(x, 335f, 361);
 
             cameraArm.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
         }

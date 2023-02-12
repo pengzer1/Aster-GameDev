@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AG.RotateMouse
+namespace AG.PlayerRotateMouse
 {
     public class RotateToMouse : MonoBehaviour
     {
@@ -8,8 +8,8 @@ namespace AG.RotateMouse
         private float rotCamXAxisSpeed = 4;
         [SerializeField]
         private float rotCamYAxisSpeed = 2;
-        private float limitMinX = -80;
-        private float limitMaxX = 50;
+        private readonly float LIMIT_X_MIN = -80;
+        private readonly float LIMIT_X_MAX = 50;
         private float eulerAngleX;
         private float eulerAngleY;
 
@@ -18,7 +18,7 @@ namespace AG.RotateMouse
             eulerAngleY += mouseX * rotCamYAxisSpeed;
             eulerAngleX += mouseY * rotCamXAxisSpeed;
 
-            eulerAngleX = ClampAngle(eulerAngleX, limitMinX, limitMaxX);
+            eulerAngleX = ClampAngle(eulerAngleX, LIMIT_X_MIN, LIMIT_X_MAX);
 
             transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
         }

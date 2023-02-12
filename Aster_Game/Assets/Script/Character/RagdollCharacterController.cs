@@ -1,7 +1,7 @@
 using UnityEngine;
-using AG.RotateMouse;
+using AG.PlayerRotateMouse;
 
-namespace AG.CharacterController
+namespace AG.PlayerController
 {
     public class RagdollCharacterController : MonoBehaviour
     {
@@ -26,6 +26,11 @@ namespace AG.CharacterController
         }
 
         void Update()
+        {
+            CharcterMove();
+        }
+
+        private void CharcterMove()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");

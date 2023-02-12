@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AG.Character
+namespace AG.PlayerCopyAnim
 {
     public class CopyAnimToRagdoll : MonoBehaviour
     {
