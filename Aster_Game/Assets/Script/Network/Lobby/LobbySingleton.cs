@@ -12,23 +12,14 @@ namespace AG.Network.AGLobby
     public class LobbySingleton : MonoBehaviour
     {
         public static LobbySingleton instance { get; private set; }
-
         public event Action<List<Lobby>> lobbyListChangedEvent;
-
         public event Action<Lobby> joinLobbyEvent;
-
         public event Action leaveLobbyEvent;
-
         public event Action kickedFromLobbyEvent;
-
         public event Action gameStartEvent;
-
         private Lobby joinedLobby;
-
         private string playerName;
-
         private float lobbyMaintainTimer = 0.0f;
-
         private float lobbyInfomationUpdateTimer = 0.0f;
 
         private void Awake()

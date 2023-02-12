@@ -11,13 +11,10 @@ namespace AG.UI.LobbyUI
     {
         [SerializeField]
         private TextMeshProUGUI lobbyNameText;
-
         [SerializeField]
         private TextMeshProUGUI lobbyPlayersText;
-
         [SerializeField]
         private TextMeshProUGUI lobbyMaxPlayersText;
-
         private Lobby lobby;
 
         private void Awake()

@@ -8,10 +8,8 @@ namespace AG.UI
     {
         [SerializeField]
         private Button serverButton;
-
         [SerializeField]
         private Button hostButton;
-
         [SerializeField]
         private Button clientButton;
 

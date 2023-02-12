@@ -9,17 +9,13 @@ namespace AG.UI.LobbyUI
         [Header("Buttons")]
         [SerializeField]
         private Button createLobbyButton;
-
         [SerializeField]
         private Button searchLobbyButton;
-
         [SerializeField]
         private Button quickMatchButton;
-
         [Header("Under Menus")]
         [SerializeField]
         private GameObject createLobbyMenu;
-        
         [SerializeField]
         private GameObject lobyListMenu;
 

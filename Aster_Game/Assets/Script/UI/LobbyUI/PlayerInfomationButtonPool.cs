@@ -9,7 +9,6 @@ namespace AG.Network.AGLobby
         private Queue<PoolableObject> buttonPool = new Queue<PoolableObject>();
         // TODO : 이 아웃버튼이 큰 문제 없는지 확인
         private Queue<PoolableObject> outbuttons = new Queue<PoolableObject>();
-
         [SerializeField]
         private PoolableObject playerInfomationButtonPrefab;
 

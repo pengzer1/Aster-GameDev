@@ -9,10 +9,8 @@ namespace AG.UI.LobbyUI
     {
         [SerializeField]
         private Button submitButton;
-
         [SerializeField]
         private TMP_InputField nameInputField;
-
         [SerializeField]
         private GameObject lobbySetupMenu;
 

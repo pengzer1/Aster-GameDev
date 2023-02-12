@@ -13,10 +13,8 @@ namespace AG.UI.LobbyUI
     {
         [SerializeField]
         private TextMeshProUGUI playerNameText;
-
         [SerializeField]
         private Button kickplayerButton;
-
         private Player player;
 
         private void Awake()

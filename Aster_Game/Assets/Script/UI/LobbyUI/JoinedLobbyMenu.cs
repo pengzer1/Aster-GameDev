@@ -11,28 +11,20 @@ namespace AG.UI.LobbyUI
     {
         [SerializeField]
         private GameObject lobbySetupMenu; 
-
         [SerializeField]
         private GameObject lobbyCreateMenu; 
-
         [SerializeField]
         private IObjectPool playerInfomationPool;
-
         [SerializeField]
         private TextMeshProUGUI lobbyNameText;
-
         [SerializeField]
         private TextMeshProUGUI playerCountText;
-
         [SerializeField]
         private TextMeshProUGUI maxPlayerCountText;
-
         [SerializeField]
         private Transform playerListContainer;
-
         [SerializeField]
         private Button leaveLobbyButton;
-
         [SerializeField]
         private Button startGameButton;
 
