@@ -3,13 +3,13 @@ using AG.GameLogic.BehaviorTree;
 
 namespace AG.Pet.BehaviorTree
 {
-    public class CheckPlayerIsNear : Node
+    public class CheckPlayerIsNearNode : Node
     {
         private static int playerLayerMask = 1 << 6;
         private Transform transform;
         private Animator anim;
         
-        public CheckPlayerIsNear(Transform transform)
+        public CheckPlayerIsNearNode(Transform transform)
         {
             this.transform = transform;
             anim = transform.GetComponent<Animator>();
