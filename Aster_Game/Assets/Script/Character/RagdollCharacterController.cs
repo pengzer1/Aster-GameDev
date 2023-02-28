@@ -1,10 +1,10 @@
 using UnityEngine;
+using Unity.Netcode;
 
 namespace AG.PlayerComponent
 {
-    public class RagdollCharacterController : MonoBehaviour
+    public class RagdollCharacterController : NetworkBehaviour
     {
-
         [SerializeField]
         private float speed = 5f;
         [SerializeField]
@@ -18,12 +18,15 @@ namespace AG.PlayerComponent
 
         private void Awake()
         {
+            if(!IsOwner)    return;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Update()
         {
+            if(!IsOwner)    return;
+            
             CharcterMove();
         }
 
