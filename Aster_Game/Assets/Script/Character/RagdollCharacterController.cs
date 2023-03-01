@@ -6,11 +6,7 @@ namespace AG.PlayerComponent
     public class RagdollCharacterController : NetworkBehaviour
     {
         [SerializeField]
-        private float speed = 5f;
-        [SerializeField]
-        private ConfigurableJoint pelvisJoint;
-        [SerializeField]
-        private Rigidbody pelvis;
+        private float speed = 3f;
         private float horizontalInput;
         private float verticalInput;
         public float horizontal { get { return horizontalInput; } }
@@ -37,7 +33,7 @@ namespace AG.PlayerComponent
 
             Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput);
             direction.Normalize();
-            pelvis.AddForce(direction * speed);
+            transform.position += direction * Time.deltaTime * speed;
         }
     }
 }
