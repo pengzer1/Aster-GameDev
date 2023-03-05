@@ -14,15 +14,15 @@ namespace AG.PlayerComponent
 
         private void Awake()
         {
-            if(!IsOwner)    return;
+            //if (!IsOwner) return;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Update()
         {
-            if(!IsOwner)    return;
-            
+            // if (!IsOwner) return;
+
             CharcterMove();
         }
 
