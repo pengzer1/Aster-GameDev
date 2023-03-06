@@ -1,36 +1,20 @@
 using UnityEngine;
 
-namespace AG.HandSwing
+namespace AG.PlayerComponent
 {
     public class HandMove : MonoBehaviour
     {
-        public GameObject hand;
-        private float x1;
-        private float x2;
-        private float move;
+        [SerializeField]
+        private float speed = 1f;
+        private float rotationX;
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
-                x1 = Input.mousePosition.x;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                x2 = Input.mousePosition.x;
-
-                move = (x1 > x2) ? 1f : 2f;
-            }
-
-            if (move == 1f)
-            {
-                hand.transform.Translate(Vector2.left * (3 * Time.deltaTime));
-            }
-
-            if (move == 2f)
-            {
-                hand.transform.Translate(Vector2.right * (3 * Time.deltaTime));
+                rotationX = Input.GetAxis("Mouse X") * speed;
+                rotationX = Mathf.Clamp(rotationX, -10f, 10f);
+                transform.Rotate(0f, rotationX, 0f, Space.World);
             }
         }
     }
