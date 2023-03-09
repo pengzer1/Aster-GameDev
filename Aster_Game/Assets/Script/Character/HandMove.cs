@@ -6,16 +6,15 @@ namespace AG.PlayerComponent
     {
         [SerializeField]
         private float speed = 1f;
-        private float rotationX;
+        private float rotationYAngle;
 
-        void Update()
+        public void Update()
         {
-            if (Input.GetMouseButton(0))
-            {
-                rotationX = Input.GetAxis("Mouse X") * speed;
-                rotationX = Mathf.Clamp(rotationX, -10f, 10f);
-                transform.Rotate(0f, rotationX, 0f, Space.World);
-            }
+            if (!Input.GetMouseButton(0))   return;
+
+            rotationYAngle = Input.GetAxis("Mouse X") * speed;
+            rotationYAngle = Mathf.Clamp(rotationYAngle, -10f, 10f);
+            transform.Rotate(0f, rotationYAngle, 0f, Space.World);
         }
     }
 }
