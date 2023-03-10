@@ -18,22 +18,24 @@ namespace AG.PlayerComponent.Animation
             }
         }
 
-        public void RequestAnimationTarget(GameObject player ,Action callback)
+        public Animator RequestTargetAnimation(GameObject player, Action callback)
         {
-            ProcessToTargetAnimation(player);
+            return ProcessAnimationTarget(player);
         }
 
-        private void ProcessToTargetAnimation(GameObject player)
+        private Animator ProcessAnimationTarget(GameObject player)
         {
             var anim = playerAnimatorToTarget[processIndex];
 
             var copyComponents = player.GetComponentsInChildren<CopyAnimToRagdoll>();
             foreach(var copyLimb in copyComponents)
             {
+                Debug.Log($"zz1");
                 var targetName = copyLimb.targetLimbName;
                 var targetTransform = anim.GetTargetTransform(targetName);
                 copyLimb.SetTargetLimb(targetTransform);
             }
+            return playerAnimatorToTarget[processIndex].GetComponent<Animator>();
         }
     }   
 }

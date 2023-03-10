@@ -11,6 +11,11 @@ namespace AG.PlayerComponent
         private ConfigurableJoint configurableJoint;
         private Quaternion targetInitialRotation;
 
+        private void Awake()
+        {
+            targetLimbName = this.gameObject.name;
+        }
+
         void Start()
         {
             configurableJoint = GetComponent<ConfigurableJoint>();
