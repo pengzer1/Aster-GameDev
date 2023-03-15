@@ -16,11 +16,12 @@ namespace AG.PlayerComponent
 
         void Start()
         {
-            targetAnimator = FindObjectOfType<MultiplayAnimatorSetting>().RequestTargetAnimation(this.gameObject, null);
+            targetAnimator = MultiplayAnimatorSetting.instance.RequestTargetAnimation(this.gameObject, null);
         }
 
         private void Update()
         {
+            // TODO : 플레이어 속도 기준으로 변경
             isForward = ragdollCharacterController.vertical >= 1;
             isBackward = ragdollCharacterController.vertical <= -1; 
             isLeft = ragdollCharacterController.horizontal <= -1;
