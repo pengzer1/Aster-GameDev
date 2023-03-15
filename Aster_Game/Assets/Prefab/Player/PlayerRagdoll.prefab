@@ -624,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &702506221568855353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &1154003642445384986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &1420321597236772244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,6 +3225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &2144858648854061188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,6 +4740,8 @@ GameObject:
   - component: {fileID: 2736809040406541232}
   - component: {fileID: 956911260487332645}
   - component: {fileID: 956911260487332646}
+  - component: {fileID: -1609176928011798145}
+  - component: {fileID: 7404746133367031907}
   m_Layer: 8
   m_Name: PlayerRagdoll
   m_TagString: Untagged
@@ -4779,8 +4785,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  pelvisJoint: {fileID: 956911261032156959}
-  pelvis: {fileID: 956911261032156952}
 --- !u!114 &956911260487332646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,6 +4799,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetAnimator: {fileID: 0}
   ragdollCharacterController: {fileID: 956911260487332645}
+--- !u!114 &-1609176928011798145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364411018518341898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &7404746133367031907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364411018518341898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d71e00200eee3446a52eaf42a856f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
 --- !u!1 &3384947621106782659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,6 +5016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &3468625213670150622
 GameObject:
   m_ObjectHideFlags: 0
@@ -5348,6 +5395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &3695783898271865398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5860,6 +5908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &4016033545104657624
 GameObject:
   m_ObjectHideFlags: 0
@@ -6398,6 +6447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &4284816982180466018
 GameObject:
   m_ObjectHideFlags: 0
@@ -9392,6 +9442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &5983006500222729384
 GameObject:
   m_ObjectHideFlags: 0
@@ -10114,7 +10165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a625852599f6b3f46b0302a4938e5fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 6190660531089271681}
+  speed: 1
 --- !u!1 &6292201727996260103
 GameObject:
   m_ObjectHideFlags: 0
@@ -10513,6 +10564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLimb: {fileID: 0}
+  targetLimbName: 
 --- !u!1 &6349558141259264479
 GameObject:
   m_ObjectHideFlags: 0

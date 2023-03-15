@@ -8,11 +8,12 @@ namespace AG.PlayerComponent.Animation
     {
         public static MultiplayAnimatorSetting instance { get; private set; }
         public TargetAnimationIndex[] playerAnimatorToTarget;
+        [SerializeField]
         private int processIndex;
 
         private void Awake()
         {
-            if(instance is not null)
+            if(instance is null)
             {
                 instance = this;
             }
@@ -30,12 +31,13 @@ namespace AG.PlayerComponent.Animation
             var copyComponents = player.GetComponentsInChildren<CopyAnimToRagdoll>();
             foreach(var copyLimb in copyComponents)
             {
-                Debug.Log($"zz1");
                 var targetName = copyLimb.targetLimbName;
                 var targetTransform = anim.GetTargetTransform(targetName);
                 copyLimb.SetTargetLimb(targetTransform);
             }
-            return playerAnimatorToTarget[processIndex].GetComponent<Animator>();
+            var returnAnimator = playerAnimatorToTarget[processIndex].GetComponent<Animator>();
+            processIndex++;
+            return returnAnimator;
         }
     }   
 }
