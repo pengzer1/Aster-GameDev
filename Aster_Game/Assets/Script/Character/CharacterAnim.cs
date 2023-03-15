@@ -1,4 +1,5 @@
 using UnityEngine;
+using AG.PlayerComponent.Animation;
 
 namespace AG.PlayerComponent
 {
@@ -12,6 +13,11 @@ namespace AG.PlayerComponent
         private bool isBackward;
         private bool isLeft;
         private bool isRight;
+
+        void Start()
+        {
+            targetAnimator = FindObjectOfType<MultiplayAnimatorSetting>().RequestTargetAnimation(this.gameObject, null);
+        }
 
         private void Update()
         {
